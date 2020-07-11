@@ -1,13 +1,13 @@
 # HPCC media reports
 HPCC is reported by ≥20 different media globally.
 
-UK: [Intelligent Data Centres](https://www.intelligentdatacentres.com/2019/08/28/alibaba-unveils-congestion-control-mechanism-for-ultra-high-speed-data-centres/), 
+* UK: [Intelligent Data Centres](https://www.intelligentdatacentres.com/2019/08/28/alibaba-unveils-congestion-control-mechanism-for-ultra-high-speed-data-centres/), 
 [Intelligent CIO](https://www.intelligentcio.com/eu/2019/08/28/alibaba-unveils-congestion-control-mechanism-for-ultra-high-speed-data-centres/),
 [Data Economy](https://data-economy.com/alibaba-builds-further-on-impressive-cloud-sales-growth/)
 
-Germany: [it-daily.net](https://www.it-daily.net/shortnews/22200-staukontrollmechanismus-fuer-ultra-high-speed-rechenzentren)
+* Germany: [it-daily.net](https://www.it-daily.net/shortnews/22200-staukontrollmechanismus-fuer-ultra-high-speed-rechenzentren)
 
-France: 
+* France: 
 [Info HighTech](https://www.infohightech.com/alibaba-devoile-un-nouveau-mecanisme-de-controle-de-la-congestion-pour-les-datacenters-hautes-performances/), 
 [Channel Business Partners](https://www.channelbp.com/content/alibaba-d%C3%A9voile-un-nouveau-m%C3%A9canisme-de-contr%C3%B4le-de-la-congestion-pour-les-datacenters-haute), 
 [Le Mag IT](https://www.lemagit.fr/actualites/252469976/Des-chercheurs-dAlibaba-accelerent-de-95-les-reseaux-Ethernet), 
