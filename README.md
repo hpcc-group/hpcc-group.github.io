@@ -115,3 +115,55 @@ As the network load increases, the gap of short flow FCT between HPCC and other 
 
 In Hadoop workload, there are more short flows, so HPCC's advantage more significantly overweighs the slowdown of long flows.
 
+### Effect of η
+In the paper we use η=95% because traditionally other proposals use 95% [[RCP](http://yuba.stanford.edu/~nanditad/thesis-NanditaD.pdf),[HULL](https://www.usenix.org/system/files/conference/nsdi12/nsdi12-final187.pdf)]. Now we show that HPCC is not sensitive to the setting of η. We compare η=95% vs 99%.
+
+Specifically, under reasonable load (≤50%), η=99% slightly improves the long flow FCT, while slightly degrades short flow FCT. At extremely high load (70%), η=99%'s improvement of the long flow FCT is more evident for HPCC-INT, but not HPCC-PINT. This is because HPCC-INT has more overhead from the INT header, so it is closer to the limit of network load than HPCC-PINT. The closer to the limit, the more improvement brought by the extra bandwidth. Therefore, we do expect at even higher loads, η=99% also brings more improvement to HPCC-PINT, although such high loads are very unlikely in practice.
+
+<table>
+    <tr>
+        <td></td>
+        <td align="center"><b>50-th percentile</b></td>
+        <td align="center"><b>95-th percentile</b></td>
+        <td align="center"><b>99-th percentile</b></td>
+    </tr>
+    <tr>
+        <td><b>Web search 30% load<b></td>
+        <td align="center"><img src="figs/fct_wb30_diffUtgt_50pct.png" width="100%"></td>
+        <td align="center"><img src="figs/fct_wb30_diffUtgt_95pct.png" width="100%"></td>
+        <td align="center"><img src="figs/fct_wb30_diffUtgt_99pct.png" width="100%"></td>
+    </tr>
+    <tr>
+        <td><b>Web search 50% load<b></td>
+        <td><img src="figs/fct_wb50_diffUtgt_50pct.png" width="100%"></td>
+        <td><img src="figs/fct_wb50_diffUtgt_95pct.png" width="100%"></td>
+        <td><img src="figs/fct_wb50_diffUtgt_99pct.png" width="100%"></td>
+    </tr>
+    <tr>
+        <td><b>Web search 70% load<b></td>
+        <td><img src="figs/fct_wb70_diffUtgt_50pct.png" width="100%"></td>
+        <td><img src="figs/fct_wb70_diffUtgt_95pct.png" width="100%"></td>
+        <td><img src="figs/fct_wb70_diffUtgt_99pct.png" width="100%"></td>
+    </tr>
+    <tr>
+        <td><b>Hadoop 30% load<b></td>
+        <td><img src="figs/fct_fb30_diffUtgt_50pct.png" width="100%"></td>
+        <td><img src="figs/fct_fb30_diffUtgt_95pct.png" width="100%"></td>
+        <td><img src="figs/fct_fb30_diffUtgt_99pct.png" width="100%"></td>
+    </tr>
+    <tr>
+        <td><b>Hadoop 50% load<b></td>
+        <td><img src="figs/fct_fb50_diffUtgt_50pct.png" width="100%"></td>
+        <td><img src="figs/fct_fb50_diffUtgt_95pct.png" width="100%"></td>
+        <td><img src="figs/fct_fb50_diffUtgt_99pct.png" width="100%"></td>
+    </tr>
+    <tr>
+        <td><b>Hadoop 70% load<b></td>
+        <td><img src="figs/fct_fb70_diffUtgt_50pct.png" width="100%"></td>
+        <td><img src="figs/fct_fb70_diffUtgt_95pct.png" width="100%"></td>
+        <td><img src="figs/fct_fb70_diffUtgt_99pct.png" width="100%"></td>
+    </tr>
+</table>
+
+## Code
+* [NS3 simulation](https://github.com/alibaba-edu/High-Precision-Congestion-Control)
