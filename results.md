@@ -1,6 +1,7 @@
 # HPCC Key results
-We have done comprehensive evaluations in both hardware testbeds and in simulations, under different application workload, at different network load. In our SIGCOMM' 2019 paper, we only show the most important results due to the space limit. Here we show the complete results that we have.
-Experiment settings and metrics are [here](#settings).
+We evaluate both INT-based HPCC (HPCC-INT) and [PINT-based HPCC (HPCC-PINT)](https://liyuliang001.github.io/publications/pint.pdf). HPCC-PINT **uses PINT to reduce the INT overhead to ≤2 bytes per packet**. While HPCC-INT have to tolerate the extra header overhead (~5%), **HPCC-PINT evaluates the real power of HPCC’s algorithm** with negligible extra header overhead.
+
+Experiment settings and metrics are mostly the same as those in the HPCC paper, except that η=99% and maxStage=0, which are the best setting for HPCC. Details are [here](#settings).
 
 
 ## Under normal network load (30%)
@@ -132,7 +133,9 @@ Specifically, under reasonable load (≤50%), η=99% slightly improves the long 
 </table>
 
 ## Settings
-We run in [ns3 simulation](https://github.com/alibaba-edu/High-Precision-Congestion-Control), with the same topology and configurations of CC schemes as those in the paper. In the paper, we already show that DCQCN+w and TIMELY+w is much better than DCQCN and TIMELY, so here we only compare with their +w versions. For HPCC, here we run at η=99%; in our paper we evaluate η=95% because other proposals typically use 95% [[RCP](http://yuba.stanford.edu/~nanditad/thesis-NanditaD.pdf),[HULL](https://www.usenix.org/system/files/conference/nsdi12/nsdi12-final187.pdf)], but now we find that η=99% does not introduce any problems and improves link utilization, which is important at high network load. Besides, HPCC's maxStage=0, which is the same as the simulation setting in our paper. The maxStage=5 in the paper is due to a typo for the simulation.
+We run in [ns3 simulation](https://github.com/alibaba-edu/High-Precision-Congestion-Control), with the same topology and configurations of CC schemes as those in the paper. In the paper, we already show that DCQCN+w and TIMELY+w is much better than DCQCN and TIMELY, so here we only compare with their +w versions. 
+
+For HPCC, we run at η=99%; in our paper we evaluate η=95% because other proposals typically use 95% [[RCP](http://yuba.stanford.edu/~nanditad/thesis-NanditaD.pdf),[HULL](https://www.usenix.org/system/files/conference/nsdi12/nsdi12-final187.pdf)], but now we find that η=99% does not introduce any problems and improves link utilization, which is important at high network load. Besides, HPCC's maxStage=0, which is actually the same as the simulation setting in our paper. The maxStage=5 in the HPCC paper is due to a typo for the simulation.
 
 In addition, we also evaluation HPCC-PINT, which **uses PINT to reduce the INT overhead to fewer than 2 bytes per packet**. We call the original version as HPCC-INT. While HPCC-INT have to tolerate the extra header overhead (~5%), **HPCC-PINT evaluates the real power of HPCC's algorithm** with negligible extra header overhead.
 
