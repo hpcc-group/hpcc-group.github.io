@@ -13,7 +13,7 @@ HPCC has been deployed in Alibaba. It shortens the flow completion times by up t
 
 * We post [extensive results](results.md) with both INT-based and PINT-based HPCC, along with the [NS3 simulator](https://github.com/alibaba-edu/High-Precision-Congestion-Control).
 * **[PINT is published in SIGCOMM' 2020](https://liyuliang001.github.io/publications/pint.pdf)**, which enhances HPCC by removing the INT overhead without losing HPCC's precision.
-* **[HPCC is widely reported by ≥20 media globally](#media-reports)**
+* **[HPCC is widely reported by ≥20 media globally](#media-reports)**.
 * **[HPCC is published in SIGCOMM' 2019](https://liyuliang001.github.io/publications/hpcc.pdf)**. Please watch our [conference talk video](https://dlnext.acm.org/doi/abs/10.1145/3341302.3342085).
 
 ## Publications
