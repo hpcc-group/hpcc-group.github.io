@@ -94,37 +94,37 @@ Specifically, under reasonable load (≤50%), η=99% slightly improves the long 
         <td align="center"><b>99-th percentile</b></td>
     </tr>
     <tr>
-        <td><b>Web search 30% load<b></td>
-        <td align="center"><img src="figs/fct_wb30_diffUtgt_50pct.png" width="100%"></td>
-        <td align="center"><img src="figs/fct_wb30_diffUtgt_95pct.png" width="100%"></td>
-        <td align="center"><img src="figs/fct_wb30_diffUtgt_99pct.png" width="100%"></td>
+        <td><b>Web search 30% load</b></td>
+        <td align="center"><img src="figs/fct_wb30_diffUtgt_50pct.png" width="100%"> </td>
+        <td align="center"><img src="figs/fct_wb30_diffUtgt_95pct.png" width="100%"> </td>
+        <td align="center"><img src="figs/fct_wb30_diffUtgt_99pct.png" width="100%"> </td>
     </tr>
     <tr>
-        <td><b>Web search 50% load<b></td>
+        <td><b>Web search 50% load</b></td>
         <td><img src="figs/fct_wb50_diffUtgt_50pct.png" width="100%"></td>
         <td><img src="figs/fct_wb50_diffUtgt_95pct.png" width="100%"></td>
         <td><img src="figs/fct_wb50_diffUtgt_99pct.png" width="100%"></td>
     </tr>
     <tr>
-        <td><b>Web search 70% load<b></td>
+        <td><b>Web search 70% load</b></td>
         <td><img src="figs/fct_wb70_diffUtgt_50pct.png" width="100%"></td>
         <td><img src="figs/fct_wb70_diffUtgt_95pct.png" width="100%"></td>
         <td><img src="figs/fct_wb70_diffUtgt_99pct.png" width="100%"></td>
     </tr>
     <tr>
-        <td><b>Hadoop 30% load<b></td>
+        <td><b>Hadoop 30% load</b></td>
         <td><img src="figs/fct_fb30_diffUtgt_50pct.png" width="100%"></td>
         <td><img src="figs/fct_fb30_diffUtgt_95pct.png" width="100%"></td>
         <td><img src="figs/fct_fb30_diffUtgt_99pct.png" width="100%"></td>
     </tr>
     <tr>
-        <td><b>Hadoop 50% load<b></td>
+        <td><b>Hadoop 50% load</b></td>
         <td><img src="figs/fct_fb50_diffUtgt_50pct.png" width="100%"></td>
         <td><img src="figs/fct_fb50_diffUtgt_95pct.png" width="100%"></td>
         <td><img src="figs/fct_fb50_diffUtgt_99pct.png" width="100%"></td>
     </tr>
     <tr>
-        <td><b>Hadoop 70% load<b></td>
+        <td><b>Hadoop 70% load</b></td>
         <td><img src="figs/fct_fb70_diffUtgt_50pct.png" width="100%"></td>
         <td><img src="figs/fct_fb70_diffUtgt_95pct.png" width="100%"></td>
         <td><img src="figs/fct_fb70_diffUtgt_99pct.png" width="100%"></td>
