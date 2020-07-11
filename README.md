@@ -23,8 +23,9 @@ ACM SIGCOMM, 2020
 Yuliang Li, Rui Miao, Hongqiang Liu, Yan Zhuang, Fei Feng, Lingbo Tang, Zheng Cao, Ming Zhang, Frank Kelly, Mohammad Alizadeh, Minlan Yu  
 ACM SIGCOMM, 2019
 
-## [Key results](results.md)
-
+## Key results
+We post [latest results](results.md) with both INT-based and PINT-based HPCC.
+We evaluate HPCC comprehensively under different application workload (web search and hadoop) and different network load (30%, 50%, 70%). 
 
 ## Code
 * [NS3 simulation](https://github.com/alibaba-edu/High-Precision-Congestion-Control)
