@@ -137,8 +137,6 @@ We run in [ns3 simulation](https://github.com/alibaba-edu/High-Precision-Congest
 
 For HPCC, we run at η=99%; in our paper we evaluate η=95% because other proposals typically use 95% [[RCP](http://yuba.stanford.edu/~nanditad/thesis-NanditaD.pdf),[HULL](https://www.usenix.org/system/files/conference/nsdi12/nsdi12-final187.pdf)], but now we find that η=99% does not introduce any problems and improves link utilization, which is important at high network load. Besides, HPCC's maxStage=0, which is actually the same as the simulation setting in our paper. The maxStage=5 in the HPCC paper is due to a typo for the simulation.
 
-In addition, we also evaluation HPCC-PINT, which **uses PINT to reduce the INT overhead to fewer than 2 bytes per packet**. We call the original version as HPCC-INT. While HPCC-INT have to tolerate the extra header overhead (~5%), **HPCC-PINT evaluates the real power of HPCC's algorithm** with negligible extra header overhead.
-
 *Network load* definition: The network load we evaluate (30%, 50%, 70%) are defined as the ratio between the number of total application bytes (payload) per second to the bandwidth. So the actual load to the network is ~11% higher (each data packet has 50-byte header (HPCC has more due to the INT header) and 60-byte ACK, so for 1 KB paylaod, 110 bytes are 11% more). Other papers may have different definitions.
 
 *Flow completion time (FCT)* definition: a flow's FCT is defined as the time period from when the flow is created to when the last byte is acknowledged at the sender.
