@@ -11,7 +11,7 @@ HPCC has been deployed in Alibaba. It shortens the flow completion times by up t
 
 ## News
 
-* We post [extensive results](results.md) with both INT-based and PINT-based HPCC.
+* We post [extensive results](results.md) with both INT-based and PINT-based HPCC, along with the [NS3 simulator](https://github.com/alibaba-edu/High-Precision-Congestion-Control).
 * **[PINT is published in SIGCOMM' 2020](https://liyuliang001.github.io/publications/pint.pdf)**, which enhances HPCC by removing the INT overhead without losing HPCC's precision.
 * **[HPCC is widely reported by ≥20 media globally](#media-reports)**
 * **[HPCC is published in SIGCOMM' 2019](https://liyuliang001.github.io/publications/hpcc.pdf)**. Please watch our [conference talk video](https://dlnext.acm.org/doi/abs/10.1145/3341302.3342085).
@@ -28,8 +28,6 @@ ACM SIGCOMM, 2019
 We post [latest results](results.md) with both INT-based and PINT-based HPCC.
 We evaluate HPCC comprehensively under different application workload (web search and hadoop) and different network load (30%, 50%, 70%). 
 
-## Code
-* [NS3 simulation](https://github.com/alibaba-edu/High-Precision-Congestion-Control)
 
 ## Media reports
 HPCC is reported by ≥20 different media globally.
@@ -60,4 +58,7 @@ HPCC is reported by ≥20 different media globally.
 [Electronique-Newsmag](https://electronique-newsmag.com/articles/180956/avec-le-mecanisme-hpcc-alibaba-cloud-compte-ameliorer-la-transmission-des-donnees-entre-data-centers.html), 
 [l'Entreprise connectée](https://lentrepriseconnectee.com/articles/180956/avec-le-mecanisme-hpcc-alibaba-cloud-compte-ameliorer-la-transmission-des-donnees-entre-data-centers.html), 
 [Info DSI](https://infodsi.com/articles/180956/avec-le-mecanisme-hpcc-alibaba-cloud-compte-ameliorer-la-transmission-des-donnees-entre-data-centers.html)
+
+## Code
+* [NS3 simulation](https://github.com/alibaba-edu/High-Precision-Congestion-Control)
 
