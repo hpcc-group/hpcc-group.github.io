@@ -1,7 +1,4 @@
----
-layout: default
-title: HPCC: High Precision Congestion Control
----
+# HPCC: High Precision Congestion Control
 
 [test](test.md)
 
