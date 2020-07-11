@@ -41,14 +41,25 @@ In addition, we also evaluation HPCC-PINT, which **uses PINT to reduce the INT o
 We first evaluate under the normal network load, which is around 30% [[Microsoft](https://conferences.sigcomm.org/sigcomm/2017/files/program-kbnets/keynote-2.pdf), [Facebook](https://conferences.sigcomm.org/sigcomm/2015/pdf/papers/p123.pdf)].
 
 #### Web search workload
-|![](figs/fct_wb30_50pct.png) 50-th percentile|![](figs/fct_wb30_95pct.png) 95-th percentile|![](figs/fct_wb30_99pct.png) 99-th percentile|
-|---|---|---|
+<table>
+    <tr>
+      <td align="center"><img src="figs/fct_wb30_50pct.png" width="100%"> <b>50-th percentile</b></td>
+      <td align="center"><img src="figs/fct_wb30_95pct.png" width="100%"> <b>95-th percentile</b></td>
+      <td align="center"><img src="figs/fct_wb30_99pct.png" width="100%"> <b>99-th percentile</b></td>
+    </tr>
+</table>
 
 HPCC significantly improves the FCT for flows < 200KB, especially at the tail. This is because HPCC resolves congestion in just one RTT, and converge to zero queue thereafter. HPCC-INT has longer FCT for long flows, which is expected because of the INT overhead, which means HPCC-INT effectively runs at a higher network load (~5% more) than other CC schemes. HPCC-PINT almost remove this extra overhead, so it improves the long flows' FCT over HPCC-INT, and makes them comparable to other schemes that keeps the buffer highly occupied. This effect is explained in detail in [PINT paper](https://liyuliang001.github.io/publications/pint.pdf).
 
 #### Hadoop workload
-|![](figs/fct_fb30_50pct.png) 50-th percentile|![](figs/fct_fb30_95pct.png) 95-th percentile|![](figs/fct_fb30_99pct.png) 99-th percentile|
-|---|---|---|
+<table>
+    <tr>
+      <td align="center"><img src="figs/fct_fb30_50pct.png" width="100%"> <b>50-th percentile</b></td>
+      <td align="center"><img src="figs/fct_fb30_95pct.png" width="100%"> <b>95-th percentile</b></td>
+      <td align="center"><img src="figs/fct_fb30_99pct.png" width="100%"> <b>99-th percentile</b></td>
+    </tr>
+</table>
+
 
 Under the Hadoop workload, the trend is similar. Moreover, since there are more short flows, HPCC's advantage is more evident.
 
@@ -56,14 +67,24 @@ Under the Hadoop workload, the trend is similar. Moreover, since there are more 
 It is possible that the network load sometime exceeds the normal condition. So it is also worth evaluating 50% load to represent the occasional high load.
 
 #### Web search workload
-|![](figs/fct_wb50_50pct.png) 50-th percentile|![](figs/fct_wb50_95pct.png) 95-th percentile|![](figs/fct_wb50_99pct.png) 99-th percentile|
-|---|---|---|
+<table>
+    <tr>
+      <td align="center"><img src="figs/fct_wb50_50pct.png" width="100%"> <b>50-th percentile</b></td>
+      <td align="center"><img src="figs/fct_wb50_95pct.png" width="100%"> <b>95-th percentile</b></td>
+      <td align="center"><img src="figs/fct_wb50_99pct.png" width="100%"> <b>99-th percentile</b></td>
+    </tr>
+</table>
 
 The trend is similar to the 30% load case. But it is important to note that under 50% load, HPCC improves the short flows FCT even at 50-th percentile (unlike the 30% load case where 50-th percentile FCT are similar across different schemes).
 
 #### Hadoop workload
-|![](figs/fct_fb50_50pct.png) 50-th percentile|![](figs/fct_fb50_95pct.png) 95-th percentile|![](figs/fct_fb50_99pct.png) 99-th percentile|
-|---|---|---|
+<table>
+    <tr>
+      <td align="center"><img src="figs/fct_fb50_50pct.png" width="100%"> <b>50-th percentile</b></td>
+      <td align="center"><img src="figs/fct_fb50_95pct.png" width="100%"> <b>95-th percentile</b></td>
+      <td align="center"><img src="figs/fct_fb50_99pct.png" width="100%"> <b>99-th percentile</b></td>
+    </tr>
+</table>
 
 The trend is similar to the web search workload.
 
@@ -73,14 +94,24 @@ A network load higher than 50% can make the network brittle--link or switch fail
 That said, it is still interesting to see how HPCC performs in this region of extremely high load as stress testing. There are also recent papers focus on this region. So we evaluate HPCC under 70% network load. Note that our 70% only considers the payload, so the actual load to the network is >77.7%.
 
 #### Web search workload
-|![](figs/fct_wb70_50pct.png) 50-th percentile|![](figs/fct_wb70_95pct.png) 95-th percentile|![](figs/fct_wb70_99pct.png) 99-th percentile|
-|---|---|---|
+<table>
+    <tr>
+      <td align="center"><img src="figs/fct_wb70_50pct.png" width="100%"> <b>50-th percentile</b></td>
+      <td align="center"><img src="figs/fct_wb70_95pct.png" width="100%"> <b>95-th percentile</b></td>
+      <td align="center"><img src="figs/fct_wb70_99pct.png" width="100%"> <b>99-th percentile</b></td>
+    </tr>
+</table>
 
 As the network load increases, the gap of short flow FCT between HPCC and other schemes are larger (note the y axis range). At 50-th percentile, HPCC is slightly slower for very long flows (>6MB) than other schemes; and the gap is larger at tail. HPCC's longer FCT for long flows is expected because HPCC keeps the queue zero. As a result, when a flow finishes, the bandwidth may be under-utilized for an RTT (till other flows grab the free bandwidth). At a higher load, flows come and finish more frequently, thus the under-utilization also happens more frequently. Other CC schemes keep the switch buffer highly utilized, so even if a flow finishes, there are still enough packets in the queue to keep the bandwidth fully utilized. So this is a fundamental tradeoff of choosing zero queue in favor of short flows.
 
 #### Hadoop workload
-|![](figs/fct_fb70_50pct.png) 50-th percentile|![](figs/fct_fb70_95pct.png) 95-th percentile|![](figs/fct_fb70_99pct.png) 99-th percentile|
-|---|---|---|
+<table>
+    <tr>
+      <td align="center"><img src="figs/fct_fb70_50pct.png" width="100%"> <b>50-th percentile</b></td>
+      <td align="center"><img src="figs/fct_fb70_95pct.png" width="100%"> <b>95-th percentile</b></td>
+      <td align="center"><img src="figs/fct_fb70_99pct.png" width="100%"> <b>99-th percentile</b></td>
+    </tr>
+</table>
 
 In Hadoop workload, there are more short flows, so HPCC's advantage more significantly overweighs the slowdown of long flows.
 
