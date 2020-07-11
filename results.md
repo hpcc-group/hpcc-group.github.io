@@ -1,5 +1,5 @@
 # HPCC Key results
-We evaluate both INT-based HPCC (HPCC-INT) and [PINT-based HPCC (HPCC-PINT)](https://liyuliang001.github.io/publications/pint.pdf). HPCC-PINT **uses PINT to reduce the INT overhead to ≤2 bytes per packet**. While HPCC-INT have to tolerate the extra header overhead (~5%), **HPCC-PINT evaluates the real power of HPCC’s algorithm** with negligible extra header overhead.
+We evaluate both INT-based HPCC (HPCC-INT) and [PINT-based HPCC (HPCC-PINT)](https://liyuliang001.github.io/publications/pint.pdf). HPCC-PINT **uses PINT to reduce the INT overhead to ≤2 bytes per packet**. While HPCC-INT has to tolerate the extra header overhead (~5%), **HPCC-PINT evaluates the real power of HPCC’s algorithm** with negligible extra header overhead.
 
 Experiment settings and metrics are mostly the same as those in the HPCC paper, except that η=99% and maxStage=0, which are the best setting for HPCC. Details are [here](#settings).
 
