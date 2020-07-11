@@ -1,8 +1,4 @@
----
-layout: default
-title: Key results
----
-
+# HPCC key results
 
 We evaluate both INT-based HPCC (HPCC-INT) and [PINT-based HPCC (HPCC-PINT)](https://liyuliang001.github.io/publications/pint.pdf). HPCC-PINT **uses PINT to reduce the INT overhead to ≤2 bytes per packet**. While HPCC-INT has to tolerate the extra header overhead (~5%), **HPCC-PINT evaluates the real power of HPCC’s algorithm** with negligible extra header overhead.
 
