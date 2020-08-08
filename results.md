@@ -4,6 +4,7 @@ We evaluate both INT-based HPCC (HPCC-INT) and [PINT-based HPCC (HPCC-PINT)](htt
 
 Experiment settings and metrics are mostly the same as those in the HPCC paper, except that η=99% and maxStage=0, which are the best setting for HPCC. Details are [here](#settings).
 
+We also aim to answer the questions about HPCC under extremely high network load. HPCC performs very well with the correct setting. Please see [here](#stress-testing-70).
 
 ## Under normal network load (30%)
 We first evaluate under the normal network load, which is around 30% [[Microsoft](https://conferences.sigcomm.org/sigcomm/2017/files/program-kbnets/keynote-2.pdf), [Facebook](https://conferences.sigcomm.org/sigcomm/2015/pdf/papers/p123.pdf)].
