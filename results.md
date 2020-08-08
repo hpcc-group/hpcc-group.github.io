@@ -85,7 +85,7 @@ We didn't use η=150% under 30% and 50% network loads because this tradeoff is o
 
 As the network load increases, HPCC η=99% is more evidently better than other schemes on short flows, at 50, 95, and 99-th percentile (note the y axis range), while on long flows, it's slower. This is an expected tradeoff of choose zero queue, as analyzed above.
 
-Under this case, HPCC η=150% offers another balance, which is slightly slower than HPCC η=99% on short flows, but is **better or comparable to all other schemes on all flows.** 
+Under this case, HPCC η=150% offers another balance, which is slightly slower than HPCC η=99% on short flows, but is **better than or comparable to all other schemes on all flows.** 
 
 
 ### Hadoop workload
