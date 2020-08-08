@@ -61,27 +61,50 @@ A network load higher than 50% can make the network brittle--link or switch fail
 
 That said, it is still interesting to see how HPCC performs in this region of extremely high load as stress testing. There are also recent papers focus on this region. So we evaluate HPCC under 70% network load. Note that our 70% only considers the payload, so the actual load to the network is >77.7%.
 
+We note that at such extreme load, keeping queue zero may waste bandwidth, harming long flows. This is because if two flows share a link with zero queue, and one of them finishes, the bandwidth is immediately under-utilized for at least an RTT, until the other flow grab the free bandwidth. At higher load, flows come and leave more frequently, so this RTT-waste of bandwidth is more frequently too. In contrast, if there is non-zero queue, even if a flow finishes, the packets in the queue can still keep the bandwidth fully utilized. So this is a fundamental tradeoff.  **Therefore, we also evaluate η=150% in HPCC.**
+
+**Since HPCC is published, many people expressed concern about HPCC under extreme network loads. We acknowledge that, zero queue is designed for reasonable network loads that are evaluated in HPCC paper, not for extreme loads. However, HPCC performs very well under extreme loads, if setting η correctly to keep non-zero but small queues, as we will show in this section.**
+
 ### Web search workload
 <table>
     <tr>
-      <td align="center"><img src="figs/fct_wb70_50pct.png" width="100%"> <b>50-th percentile</b></td>
-      <td align="center"><img src="figs/fct_wb70_95pct.png" width="100%"> <b>95-th percentile</b></td>
-      <td align="center"><img src="figs/fct_wb70_99pct.png" width="100%"> <b>99-th percentile</b></td>
+      <td align="center"><img src="figs/fct_wb70_50pct.png" width="100%"> <b>50-th percentile, HPCC η=99%</b></td>
+      <td align="center"><img src="figs/fct_wb70_95pct.png" width="100%"> <b>95-th percentile, HPCC η=99%</b></td>
+      <td align="center"><img src="figs/fct_wb70_99pct.png" width="100%"> <b>99-th percentile, HPCC η=99%</b></td>
     </tr>
 </table>
 
-As the network load increases, the gap of short flow FCT between HPCC and other schemes are larger (note the y axis range). At 50-th percentile, HPCC is slightly slower for very long flows (>6MB) than other schemes; and the gap is larger at tail. HPCC's longer FCT for long flows is expected because HPCC keeps the queue zero. As a result, when a flow finishes, the bandwidth may be under-utilized for an RTT (till other flows grab the free bandwidth). At a higher load, flows come and finish more frequently, thus the under-utilization also happens more frequently. Other CC schemes keep the switch buffer highly utilized, so even if a flow finishes, there are still enough packets in the queue to keep the bandwidth fully utilized. So this is a fundamental tradeoff of choosing zero queue in favor of short flows.
+<table>
+    <tr>
+      <td align="center"><img src="figs/fct_wb70_utgt150_50pct.png" width="100%"> <b>50-th percentile, HPCC η=150%</b></td>
+      <td align="center"><img src="figs/fct_wb70_utgt150_95pct.png" width="100%"> <b>95-th percentile, HPCC η=150%</b></td>
+      <td align="center"><img src="figs/fct_wb70_utgt150_99pct.png" width="100%"> <b>99-th percentile, HPCC η=150%</b></td>
+    </tr>
+</table>
+
+As the network load increases, HPCC η=99% is more evidently better than other schemes on short flows, at 50, 95, and 99-th percentile (note the y axis range), while on long flows, it's slower. This is an expected tradeoff of choose zero queue, as analyzed above.
+
+Under this case, HPCC η=150% offers another balance, which is slightly slower than HPCC η=99% on short flows, but is **better or comparable to all other schemes on all flows.** 
+
 
 ### Hadoop workload
 <table>
     <tr>
-      <td align="center"><img src="figs/fct_fb70_50pct.png" width="100%"> <b>50-th percentile</b></td>
-      <td align="center"><img src="figs/fct_fb70_95pct.png" width="100%"> <b>95-th percentile</b></td>
-      <td align="center"><img src="figs/fct_fb70_99pct.png" width="100%"> <b>99-th percentile</b></td>
+      <td align="center"><img src="figs/fct_fb70_50pct.png" width="100%"> <b>50-th percentile, HPCC η=99%</b></td>
+      <td align="center"><img src="figs/fct_fb70_95pct.png" width="100%"> <b>95-th percentile, HPCC η=99%</b></td>
+      <td align="center"><img src="figs/fct_fb70_99pct.png" width="100%"> <b>99-th percentile, HPCC η=99%</b></td>
     </tr>
 </table>
 
-In Hadoop workload, there are more short flows, so HPCC's advantage more significantly overweighs the slowdown of long flows.
+<table>
+    <tr>
+      <td align="center"><img src="figs/fct_fb70_utgt150_50pct.png" width="100%"> <b>50-th percentile, HPCC η=150%</b></td>
+      <td align="center"><img src="figs/fct_fb70_utgt150_95pct.png" width="100%"> <b>95-th percentile, HPCC η=150%</b></td>
+      <td align="center"><img src="figs/fct_fb70_utgt150_99pct.png" width="100%"> <b>99-th percentile, HPCC η=150%</b></td>
+    </tr>
+</table>
+
+The trend is similar to the web search workload.
 
 ## Effect of η
 In the paper we use η=95% because traditionally other proposals use 95% [[RCP](http://yuba.stanford.edu/~nanditad/thesis-NanditaD.pdf),[HULL](https://www.usenix.org/system/files/conference/nsdi12/nsdi12-final187.pdf)]. Now we show that HPCC is not sensitive to the setting of η. We compare η=95% vs 99%.
