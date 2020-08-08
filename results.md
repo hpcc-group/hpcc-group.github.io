@@ -4,7 +4,7 @@ We evaluate both INT-based HPCC (HPCC-INT) and [PINT-based HPCC (HPCC-PINT)](htt
 
 Experiment settings and metrics are mostly the same as those in the HPCC paper, except that η=99% and maxStage=0, which are the best setting for HPCC. Details are [here](#settings).
 
-We also aim to answer questions about HPCC under extremely high network load. HPCC performs very well with the correct setting. Please see [here](#stress-testing-70).
+We also aim to answer questions about HPCC under extremely high network load. HPCC performs very well with the correct setting. Please see [here](#under-extreme-network-load-70).
 
 ## Under normal network load (30%)
 We first evaluate under the normal network load, which is around 30% [[Microsoft](https://conferences.sigcomm.org/sigcomm/2017/files/program-kbnets/keynote-2.pdf), [Facebook](https://conferences.sigcomm.org/sigcomm/2015/pdf/papers/p123.pdf)].
@@ -57,7 +57,7 @@ The trend is similar to the 30% load case. But it is important to note that unde
 
 The trend is similar to the web search workload.
 
-## Stress testing (70%)
+## Under extreme network load (70%)
 A network load higher than 50% can make the network brittle--link or switch failures can cause severe congestion or even ever-increasing number of unfinished flows [[CONGA](https://people.csail.mit.edu/alizadeh/papers/conga-sigcomm14.pdf)]. This is because ECMP balances traffic poorly under asymmetry. Failrues are so common in datacenters that the topology is typically guaranteed to be asymmetric [[Google](http://www.sysnet.ucsd.edu/sysnet/miscpapers/wcmp-eurosys-final.pdf)].
 
 **Since HPCC is published, many people expressed concern about HPCC under extreme network loads. We acknowledge that, zero queue is designed for reasonable network loads that are evaluated in HPCC paper, not for extreme loads. However, HPCC performs very well under extreme loads, if setting η correctly to keep non-zero but small queues. We will show this by evaluating HPCC under 70% network load. Note that our definition of 70% only considers the payload, so the actual load to the network is >77.7%.**
