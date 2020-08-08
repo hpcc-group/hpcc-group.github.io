@@ -4,7 +4,7 @@ We evaluate both INT-based HPCC (HPCC-INT) and [PINT-based HPCC (HPCC-PINT)](htt
 
 Experiment settings and metrics are mostly the same as those in the HPCC paper, except that η=99% and maxStage=0, which are the best setting for HPCC. Details are [here](#settings).
 
-We also aim to answer the questions about HPCC under extremely high network load. HPCC performs very well with the correct setting. Please see [here](#stress-testing-70).
+We also aim to answer questions about HPCC under extremely high network load. HPCC performs very well with the correct setting. Please see [here](#stress-testing-70).
 
 ## Under normal network load (30%)
 We first evaluate under the normal network load, which is around 30% [[Microsoft](https://conferences.sigcomm.org/sigcomm/2017/files/program-kbnets/keynote-2.pdf), [Facebook](https://conferences.sigcomm.org/sigcomm/2015/pdf/papers/p123.pdf)].
@@ -62,8 +62,9 @@ A network load higher than 50% can make the network brittle--link or switch fail
 
 **Since HPCC is published, many people expressed concern about HPCC under extreme network loads. We acknowledge that, zero queue is designed for reasonable network loads that are evaluated in HPCC paper, not for extreme loads. However, HPCC performs very well under extreme loads, if setting η correctly to keep non-zero but small queues. We will show this by evaluating HPCC under 70% network load. Note that our definition of 70% only considers the payload, so the actual load to the network is >77.7%.**
 
-We note that at such an extreme load, keeping queue zero may waste bandwidth, harming long flows. This is because if two flows share a link with zero queue, and one of them finishes, the bandwidth is immediately under-utilized for at least an RTT, until the other flow grabs the free bandwidth. At higher loads, flows come and leave more frequently, so the RTT-waste of bandwidth is more frequently too. In contrast, if there is non-zero queue, even if a flow finishes, the packets in the queue can still keep the bandwidth fully utilized. So this is a fundamental tradeoff.  **Therefore, we also evaluate η=150% in HPCC to keep a small queue (0.5 BDP).**
+We note that at such an extreme load, keeping queue zero may waste bandwidth, harming long flows. This is because if two flows share a link with zero queue, and one of them finishes, the bandwidth is immediately under-utilized for at least an RTT, until the other flow grabs the free bandwidth. At higher loads, flows come and leave more frequently, so the RTT-waste of bandwidth is more frequently too. In contrast, if there is non-zero queue, even if a flow finishes, the packets in the queue can still keep the bandwidth fully utilized. So this is a fundamental tradeoff.  **Therefore, we also evaluate η=150% in HPCC to keep a small queue (0.5 BDP).** 
 
+We didn't use η=150% under 30% and 50% network loads because this tradeoff is only evident at extreme network loads, and η=99% brings the largest benefit. But η=150% also out-performs other schemes under 30% and 50% loads.
 
 ### Web search workload
 <table>
